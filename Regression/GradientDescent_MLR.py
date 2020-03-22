@@ -49,16 +49,15 @@ def main():
     w1 = 0
     w2 = 0
     # 迭代步数
-    epochs = 1000
+    epochs = 10000
     print("starting w0={0},w1={1},w2={2},error={3}".format(w0, w1, w2, loss_func(w0, w1, w2, x, y)))
     print("running...")
-    w0_, w1_, w2_ = gradient_descent(x, y, w0, w1, w2, epochs, lr)
-    print("w0={0},w1={1},w2={2},error={3}".format(w0_, w1_, w2_, loss_func(w0_, w1_, w2_, x, y)))
+    w0, w1, w2 = gradient_descent(x, y, w0, w1, w2, epochs, lr)
+    print("w0={0},w1={1},w2={2},error={3}".format(w0, w1, w2, loss_func(w0, w1, w2, x, y)))
     fig1 = plt.figure()
     ax = Axes3D(fig1)
-    x0 = x[:, 0]
-    x1 = x[:, 1]
-    # 生成网格矩阵
+
+    # 生成网格矩阵nb
     x0, x1 = np.meshgrid(x0, x1)
     z = w1 * x0 + w2 * x1 + w0
     ax.plot_surface(x0, x1, z)
