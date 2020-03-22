@@ -56,7 +56,9 @@ def main():
     print("w0={0},w1={1},w2={2},error={3}".format(w0, w1, w2, loss_func(w0, w1, w2, x, y)))
     fig1 = plt.figure()
     ax = Axes3D(fig1)
-
+    ax.scatter(x[:, 0], x[:, 1], y, marker="o", c='r', s=100)
+    x0 = x[:, 0]
+    x1 = x[:, 1]
     # 生成网格矩阵nb
     x0, x1 = np.meshgrid(x0, x1)
     z = w1 * x0 + w2 * x1 + w0
